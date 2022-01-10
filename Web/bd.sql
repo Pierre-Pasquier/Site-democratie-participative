@@ -136,7 +136,7 @@ INSERT INTO Demandes VALUES(3,5,'en attente',0,'Nancy',"Bonjour, êtes vous int�
 
 INSERT INTO Demandes VALUES(4,2,'en attente',0,'Nancy',"Bonjour j aurai besoin de quelqu un pour venir arroser mon jardin pendant mes vacances. J ai 200 mètres carré et j habite à Villers","04/01/22","Besoin de quelqu un pour arroser mon jardin pendant mes vacances",'Jardinage','28/01/22');
 
-INSERT INTO Demandes VALUES(5,7,'en attente',0,'Nancy',"Bonjour, j aurai besoin d aide pour débarrasser mon apartement de 25 mètres carrés le 20/01/2022 ","04/01/22",'Peinture Tram','Déménagement','20/01/22');
+INSERT INTO Demandes VALUES(5,7,'en attente',0,'Nancy',"Bonjour, j aurai besoin d aide pour débarrasser mon apartement de 25 mètres carrés le 20/01/2022 ","04/01/22",'Besoin d aide pour déménager','Déménagement','20/01/22');
 
 INSERT INTO Demandes VALUES(6,8,'en attente',0,'Nancy',"Bonjour, je suis en 3ème et j aurai besoin d aide en maths. Je pense que 2h par semaine suffirait","04/01/22","Besoin d aide en maths (niveau 3ème)",'Aide aux devoirs','10/01/22');
 
