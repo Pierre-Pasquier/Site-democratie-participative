@@ -1444,7 +1444,7 @@ def messondages(idd):
             return render_template('messondages.html',test=test,vide=False,list=[],id_user=idd)
         else:
             a=db.cursor()
-            a.execute(("Select type,typeid from Sondages where Sondages.id= ?"),(idd))
+            a.execute(("Select type,typeid from Sondages where Sondages.id= ?"),(idd,))
             l=a.fetchall()
 
             if not l:
