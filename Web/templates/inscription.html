@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Help&Go</title>
+    <link rel="stylesheet" href='/static/styles-layout.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>        
+<div class="fixed-header">
+        <div class="container-top">
+            <div class="gauche"><a href="/home?id={{id_user}}"><img src='/static/help_go_icone.png'></a></div>
+            <div class="droite">
+                    <nav>
+                    <a href="/home?id={{id_user}}"><i class="fa fa-home"></i>  Accueil</a>
+                    <a href="/à_propos?id={{id_user}}"><i class="fa fa-question"></i>  A propos</a>
+                    <a href="/contactez_nous?id={{id_user}}"><i class="fa fa-envelope"></i>  Contactez nous</a>
+                    </nav>
+
+            </div>
+        </div>
+</div>
+        <div class="sidenav">
+            <nav class="nav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                <ul class="nav flex-column">
+                    
+               
+        
+                  </ul>
+            </nav>
+          </div>
+        <div class="main container-bot"> 
+            <h1>Inscription :</h1>
+            <form class="px-4 py-3" method="POST">
+                <p><div class="form-group">
+                <label for="mail">Adresse mail</label>
+                <input required name="mail" type="email" class="form-control" id="mail" aria-describedby="emailHelp" placeholder="email@exemple.com">
+                <p><small id="emailHelp" class="form-text text-muted" style="color:#625f5f">Votre adresse mail ne sera jamais divulguée nul part.</small></p>
+                </div></p>
+                <p>
+                    {% if inscrit == True %}
+                    <div style="color:#FF0000">
+                        Vous êtes déja inscris. Veuillez vous connecter ici :
+                        <button type="submit" class="btn btn-primary"><a style="color:#ffffff" href='/connexion'>Se connecter</a></button>
+                    </div>
+                    {% endif %}
+                </p>
+                
+                <p><div class="form-group">
+                    <label for=isMairie>Vous inscrivez vous en tant que Mairie de votre commune/ville ?</label>
+                    <input type='radio' id=isMairie name=isMairie value=True required>  Oui
+                    <input type='radio' id=isMairie name=isMairie value=False required>  Non
+                </div>
+
+                <p><div class="form-group">
+                    <label for="numTel">Numéro de Téléphone (facultatif)</label>
+                    <input name="numTel" type="tel" pattern="[0-9]{10}" class="form-control" id="mdp" placeholder="Numéro de téléphone">
+                    <p><small id="emailHelp" class="form-text text-muted" style="color:#625f5f">Format : 0123456789</small></p>
+                    {% if erreur_tel == True %}
+                    <p style="color:#FF0000">Numéro de téléphone invalide</p>
+                    {% endif %}
+                </div></p>
+
+                <p><div class="form-group">
+                    <label for="pseudo">Pseudonyme</label>
+                    <input minlength="4" maxlength="20" required name="pseudo" type="text" class="form-control" id="pseudo" placeholder="Pseudonyme">
+                    <p><small id="emailHelp" class="form-text text-muted" style="color:#625f5f">Votre pseudo doit contenir entre 4 et 20 caractères</small></p>
+                    {% if erreur_pseudo == True %}
+                    <p style="color:#FF0000"> Pseudo invalide</p>
+                    {% endif %}
+                </div></p>
+                <p>
+                    {% if pris == True %}
+                    <div style="color:#FF0000">
+                        Ce pseudonyme est deja pris. Veuillez en choisir un autre
+                    </div>
+                    {% endif %}
+                </p>
+
+                <p><div class="form-group">
+                    <label for="description">Description</label>
+                    <input required name="description" type="text" class="form-control" id="description" placeholder="Description">
+                </div></p>
+
+                <p><div class="form-group">
+                    <label for="mdpasse">Mot de passe</label>
+                    <input minlength="4" maxlength="20" required name="mdp" type="password" class="form-control" id="mdpasse" placeholder="Mot de passe">
+                    <p><small id="emailHelp" class="form-text text-muted" style="color:#625f5f">Votre mot de passe doit contenir entre 4 et 20 caractères</small></p>
+                    <input type="checkbox" onclick="Afficher('mdpasse')"> Afficher le mot de passe
+                    <script>
+                    function Afficher(m)
+                    { 
+                    var input = document.getElementById(m);
+                    if (input.type === "password")
+                    {input.type = "text";} 
+                    else
+                    {input.type = "password";}
+                    }
+                    </script>
+                    {% if erreur_mdp == True %}
+                    <p style="color:#FF0000"> Ce mot de passe ne vérifie pas les conditions pour être valide</p>
+                    {% endif %}
+                </div></p>
+
+                <p><div class="form-group">
+                    <label for="mdpverif">Vérification du mot de passe</label>
+                    <input minlength="4" maxlength="20" required name="mdpverif" type="password" class="form-control" id="mdpverif" placeholder="Vérification mot de passe">
+
+                    <input type="checkbox" onclick="Afficher('mdpverif')"> Afficher la vérification du mot de passe       
+                </div>
+                {% if egal == False %}
+                <div style="color:#FF0000">
+                    Les deux mots de passe indiqués ne sont pas identiques
+                </div>
+                {% endif %}
+                {% if complet == False %}
+                <div style="color:#FF0000">
+                    Veuillez remplir tous les champs
+                </div>
+                {% endif %}
+                <p><div>
+                    <input type="submit" class="btn btn-primary" value="S'inscrire"></input>
+                </div></p>
+            </form>
+
+        </div>    
+        <div class="fixed-footer">
+            <div class="container-bot">Help & Go</div>        
+        </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<body>
+    
+</body>
+</html>
+
+
+

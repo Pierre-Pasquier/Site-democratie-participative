@@ -1,0 +1,14 @@
+div#content div{
+    display: inline-block;
+    width: 48%;
+}
+div#content div h1, p, iframe{
+    margin: 35px;
+}
+div#content div.leftbox{
+    background-color: rgb(0, 0, 0);
+    vertical-align: top;
+}
+div#content div.rightbox{
+    background-color: green;
+}

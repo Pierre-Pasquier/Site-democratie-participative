@@ -1,0 +1,46 @@
+.container{
+    height:100vh;
+    
+    display:flex;
+    flex-direction:column;
+  }
+  
+  .item{
+    font-size:2em;
+    margin:5px;
+    padding:5px;
+    border:solid 2px black;
+    text-align:center;  
+  }
+  
+  .header{
+    background-color: #9900FF;
+  }
+  
+  .flexbody{
+    flex:1; /*cet élément va occuper toute la place disponible sur l'axe vertial*/
+    display:flex; /*les éléments contenus dans celui-ci s'afficheront en ligne*/
+    flex-direction:row; /*valeur par défaut*/
+  }
+  
+  .menuLeft{
+    background-color: #00FFFF;
+  }
+  
+  .content{
+    background-color:#DDDDDD;
+    flex:1; /*cet élément va occuper tout l'espace disponible sur l'axe horizontal*/
+  }
+  
+  .footer{
+   background-color:#FF00FF;
+  }
+  
+  
+  
+  
+  
+  /*margin codepen*/
+  body{
+    margin:0;
+  }
